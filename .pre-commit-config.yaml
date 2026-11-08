@@ -1,0 +1,18 @@
+repos:
+  # General file hygiene checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace     # remove spaces at line ends
+      - id: end-of-file-fixer       # every file ends with one newline
+      - id: check-yaml              # YAML files are valid
+      - id: check-toml              # pyproject.toml is valid
+      - id: check-added-large-files # stop accidental huge files
+
+  # Ruff: lint first (with auto-fix), then format
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.4
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
